@@ -1,0 +1,166 @@
+/* Reset margins and set default font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Background gradient matching the image */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #7c2ae8 0%, #3a4bd9 100%);
+}
+
+/* Main white card container */
+.game-container {
+    background-color: #f4f5f9;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Title styling */
+h1 {
+    color: #222;
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+}
+
+/* --- NEW: Scoreboard Styles --- */
+.scoreboard {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 250px;
+    margin-bottom: 20px;
+}
+
+.player-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.4; /* Fades out the player whose turn it isn't */
+    transition: all 0.3s ease;
+}
+
+/* When it's this player's turn, make them fully visible and slightly larger */
+.player-profile.active {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.avatar {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%; /* Makes the image a perfect circle */
+    object-fit: cover; /* Ensures the image doesn't stretch */
+    border: 3px solid #e0e0e0;
+    margin-bottom: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Different colored borders for O and X when active */
+#profile-O.active .avatar {
+    border-color: #28c759; /* Green for O */
+}
+#profile-X.active .avatar {
+    border-color: #e74c3c; /* Red for X */
+}
+
+.player-profile span {
+    font-weight: bold;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+/* Ensure winning message has a fixed height so it doesn't push the board down suddenly */
+.winning-message {
+    min-height: 24px;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+}
+/* ------------------------------ */
+
+/* 3x3 Grid layout */
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+/* Individual box styling */
+.cell {
+    background-color: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+/* Slight hover effect for the boxes */
+.cell:hover {
+    background-color: #fafafa;
+}
+
+/* Green restart button */
+#restart-btn {
+    background-color: #28c759;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#restart-btn:hover {
+    background-color: #23ad4d;
+}
+
+/* --- Mode Selector Styles --- */
+.mode-selector {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.mode-btn {
+    background-color: transparent;
+    color: #555;
+    border: 2px solid #ccc;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.mode-btn:hover {
+    border-color: #7c2ae8;
+    color: #7c2ae8;
+}
+
+.mode-btn.active {
+    background-color: #7c2ae8;
+    color: white;
+    border-color: #7c2ae8;
+}
